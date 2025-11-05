@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Портфолио — Ваше Имя</title>
+  <meta name="description" content="Портфолио: веб-разработчик, дизайнер, проекты и контакты.">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#94a3b8;
+      --accent:#7c3aed;
+      --glass: rgba(255,255,255,0.03);
+      --radius:14px;
+      --maxw:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:linear-gradient(180deg, #071025 0%, #071421 60%);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding:48px 20px;
+      display:flex;
+      justify-content:center;
+    }
+    .container{width:100%;max-width:var(--maxw)}
+
+    header{
+      display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;
+    }
+    .logo{display:flex;gap:12px;align-items:center}
+    .logo .mark{
+      width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff
+    }
+    nav a{color:var(--muted);text-decoration:none;margin-left:18px}
+    nav a:hover{color:#fff}
+
+    .hero{
+      display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:center;margin-bottom:34px
+    }
+    .card{background:var(--card);border-radius:var(--radius);padding:26px;box-shadow:0 6px 30px rgba(2,6,23,0.6)}
+
+    .intro h1{font-size:30px;margin:0 0 8px}
+    .intro p{color:var(--muted);margin:0 0 18px}
+    .cta{display:flex;gap:12px}
+    .btn{background:linear-gradient(90deg,var(--accent),#06b6d4);border:none;color:#fff;padding:10px 16px;border-radius:10px;cursor:pointer}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06)}
+
+    .profile{display:flex;flex-direction:column;gap:14px;align-items:center;text-align:center}
+    .avatar{width:160px;height:160px;border-radius:18px;background:linear-gradient(135deg,#0ea5a4,#7c3aed);display:flex;align-items:center;justify-content:center;font-size:44px;font-weight:700}
+    .meta{color:var(--muted)}
+
+    section{margin-bottom:28px}
+    .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .project{padding:14px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);cursor:pointer}
+    .project h3{margin:0 0 6px;font-size:16px}
+    .project p{margin:0;color:var(--muted);font-size:13px}
+
+    .skills{display:flex;gap:8px;flex-wrap:wrap}
+    .skill{background:var(--glass);padding:8px 10px;border-radius:999px;color:var(--muted);font-size:13px}
+
+    footer{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:14px}
+
+    /* responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .projects-grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:520px){
+      body{padding:20px}
+      .projects-grid{grid-template-columns:1fr}
+      nav a{margin-left:10px}
+    }
+
+    /* modal */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.6);display:none;align-items:center;justify-content:center}
+    .modal{background:#061226;padding:20px;border-radius:12px;max-width:720px;width:94%}
+    .modal h2{margin:0 0 8px}
+    .modal p{color:var(--muted)}
+    .close{background:transparent;border:0;color:var(--muted);cursor:pointer;font-size:18px}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <div class="mark">AI</div>
+        <div>
+          <div style="font-weight:600">Ваше Имя</div>
+          <div style="font-size:13px;color:var(--muted)">Веб-разработчик • UI/UX • Фриланс</div>
+        </div>
+      </div>
+      <nav aria-label="Основная навигация">
+        <a href="#projects">Проекты</a>
+        <a href="#skills">Навыки</a>
+        <a href="#contact">Контакты</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="card intro">
+          <h1>Привет — я Ваше Имя</h1>
+          <p>Я создаю быстрые, доступные и красивые интерфейсы для веба. Ниже — выбранные проекты и контакты.</p>
+          <div class="cta">
+            <button class="btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Связаться</button>
+            <a class="btn ghost" href="#projects">Мои работы</a>
+          </div>
+        </div>
+
+        <aside class="card profile" aria-label="Профиль">
+          <div class="avatar">VM</div>
+          <div style="font-weight:600">Ваше Имя</div>
+          <div class="meta">Frontend • React • Design</div>
+          <div style="display:flex;gap:8px;margin-top:12px">
+            <a class="btn ghost" href="#">Резюме</a>
+            <a class="btn" href="#contact">Hire me</a>
+          </div>
+        </aside>
+      </section>
+
+      <section id="projects">
+        <h2 style="margin:0 0 12px">Проекты</h2>
+        <div class="projects-grid">
+          <article class="project card" onclick="openModal(this)" data-title="Проект A" data-desc="Landing page для стартапа.">
+            <h3>Проект A</h3>
+            <p>Landing page — UI/UX, HTML/CSS, JS.</p>
+          </article>
+
+          <article class="project card" onclick="openModal(this)" data-title="Проект B" data-desc="Приложение для задач.">
+            <h3>Проект B</h3>
+            <p>SPA — React, API.</p>
+          </article>
+
+          <article class="project card" onclick="openModal(this)" data-title="Проект C" data-desc="Редизайн магазина.">
+            <h3>Проект C</h3>
+            <p>e-commerce — оптимизация.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills">
+        <h2 style="margin:0 0 12px">Навыки</h2>
+        <div class="card">
+          <div class="skills">
+            <span class="skill">HTML</span>
+            <span class="skill">CSS</span>
+            <span class="skill">JavaScript</span>
+            <span class="skill">React</span>
+            <span class="skill">TypeScript</span>
+            <span class="skill">Figma</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="gallery">
+        <h2 style="margin:0 0 12px">Gallery</h2>
+        <div class="card">
+          <div class="projects-grid">
+            <img src="image1.jpg" alt="Gallery image 1" style="width:100%;height:320px;object-fit:cover;border-radius:12px;">
+            <img src="image2.jpg" alt="Gallery image 2" style="width:100%;height:320px;object-fit:cover;border-radius:12px;">
+            <img src="image3.jpg" alt="Gallery image 3" style="width:100%;height:320px;object-fit:cover;border-radius:12px;">
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2 style="margin:0 0 12px">Контакты</h2>
+        <div class="card">
+          <form id="contactForm" onsubmit="handleSubmit(event)">
+            <div style="display:flex;gap:12px;flex-wrap:wrap">
+              <input name="name" placeholder="Имя" required style="flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit">
+              <input name="email" type="email" placeholder="Email" required style="flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit">
+            </div>
+            <textarea name="message" placeholder="Сообщение" rows="5" required style="width:100%;margin-top:12px;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit"></textarea>
+            <div style="display:flex;gap:10px;margin-top:12px;align-items:center">
+              <button class="btn" type="submit">Отправить</button>
+              <div id="formStatus" style="color:var(--muted)"></div>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer style="margin-top:20px">
+      <div>© <span id="year"></span> Ваше Имя</div>
+      <div style="color:var(--muted)">Сделано с ❤️</div>
+    </footer>
+  </div>
+
+  <!-- modal -->
+  <div id="modalBackdrop" class="modal-backdrop" role="dialog" aria-modal="true">
+    <div class="modal">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <h2 id="modalTitle"></h2>
+        <button class="close" onclick="closeModal()">✕</button>
+      </div>
+      <p id="modalDesc"></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function openModal(el){
+      document.getElementById('modalTitle').textContent = el.dataset.title;
+      document.getElementById('modalDesc').textContent = el.dataset.desc;
+      document.getElementById('modalBackdrop').style.display = 'flex';
+    }
+    function closeModal(){
+      document.getElementById('modalBackdrop').style.display = 'none';
+    }
+
+    function handleSubmit(e){
+      e.preventDefault();
+      const status=document.getElementById('formStatus');
+      status.textContent='Отправка...';
+      setTimeout(()=>{status.textContent='Отправлено!'; e.target.reset();},800);
+    }
+  </script>
+</body>
+</html>
